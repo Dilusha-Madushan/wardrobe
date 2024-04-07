@@ -144,15 +144,15 @@ def model_in(image):
 
 
 def aprocess_image_file(image_file):
-    # print(image_file)
+    
     # # should load one file
-    # image = PILImage.open(image_file)
+    image = PILImage.open(image_file)
     #
     # # Example of further processing - replace with your actual logic
     img_dir = str(image_file)
     #
-    # pred_seg = model_in(image)
-    # background_rem(pred_seg, image, img_dir)
+    pred_seg = model_in(image)
+    background_rem(pred_seg, image, img_dir)
 
     img_docs = SimpleDirectoryReader(input_files=[img_dir]).load_data()
     output = pydantic_gemini(ReceiptInfo, img_docs, prompt_template_str)
